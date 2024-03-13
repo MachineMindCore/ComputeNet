@@ -1,2 +1,0 @@
-[console_scripts]
-compute_net = compute_net.main:main
