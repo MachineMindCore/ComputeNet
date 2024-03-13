@@ -3,9 +3,11 @@ import importlib.util
 import igraph as ig
 
 def load_gml(from_file):
-    return content
+    loaded_graph = ig.Graph.Load(from_file, format="gml")
+    return loaded_graph
 
-def save_gml(content, to_file):
+def save_gml(graph, to_file):
+    graph.write(to_file, format="gml")
     return 
 
 def import_function(file_path, function_name):
