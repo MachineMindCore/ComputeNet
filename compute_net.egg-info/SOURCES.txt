@@ -1,0 +1,10 @@
+README.md
+setup.py
+compute_net/__init__.py
+compute_net/file_manager.py
+compute_net/main.py
+compute_net.egg-info/PKG-INFO
+compute_net.egg-info/SOURCES.txt
+compute_net.egg-info/dependency_links.txt
+compute_net.egg-info/entry_points.txt
+compute_net.egg-info/top_level.txt
