@@ -3,4 +3,5 @@
 
 # Ignore Python binary files
 *.pyc
+*.egg-info
 __pycache__/
