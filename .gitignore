@@ -1,7 +1,7 @@
 # Ignore folders starting with a dot
 .*/
+*.egg-info/
 
 # Ignore Python binary files
 *.pyc
-*.egg-info
 __pycache__/
