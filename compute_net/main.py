@@ -1,20 +1,19 @@
 import argparse
 
+from igraph import Graph
 from compute_net.file_manager import load_graph, save_graph, import_function
 
 
-def pipeline(from_addr, module_addr, to_addr, function_name, *args, **kwargs):
-    transformer = import_function(module_addr, function_name)
-    input = load_graph(from_addr)
-    output = transformer(input, *args, **kwargs)
-    save_graph(output, to_addr)
+def pipeline(input_graph: Graph, function: function, *args, **kwargs) -> Graph:
+    output = function(input_graph, *args, **kwargs)
+    return output
 
-
-def entry_pipeline(from_addr, module_addr, to_addr, function_name):
+def entry_pipeline(from_addr, module_addr, to_addr, function_name) -> None:
     transformer = import_function(module_addr, function_name)
     input = load_graph(from_addr)
     output = transformer(input)
     save_graph(output, to_addr)
+    return
 
 def main():
     parser = argparse.ArgumentParser(description="Transform a network in GML format using a specified function.")
