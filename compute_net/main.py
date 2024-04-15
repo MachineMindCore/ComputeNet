@@ -24,6 +24,7 @@ def main():
     parser.add_argument("--function", dest="function", required=True, help="Function name of the transformation")
     args = parser.parse_args()
     
+    print(f"{args.from_addr} -> [{args.function}] -> {args.to_addr}")
     entry_pipeline(args.from_addr, args.module_addr, args.to_addr, args.function)
 
 
