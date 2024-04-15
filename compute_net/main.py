@@ -3,10 +3,10 @@ import argparse
 from compute_net.file_manager import load_graph, save_graph, import_function
 
 
-def pipeline(from_addr, module_addr, to_addr, function_name, *args, **kargs):
+def pipeline(from_addr, module_addr, to_addr, function_name, *args, **kwargs):
     transformer = import_function(module_addr, function_name)
     input = load_graph(from_addr)
-    output = transformer(input, *args, **kargs)
+    output = transformer(input, *args, **kwargs)
     save_graph(output, to_addr)
 
 
