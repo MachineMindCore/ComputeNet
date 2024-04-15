@@ -1,13 +1,20 @@
 import argparse
 
-from compute_net.file_manager import load_gml, save_gml, import_function
+from compute_net.file_manager import load_graph, save_graph, import_function
 
 
-def compute(from_addr, module_addr, to_addr, function_name):
+def pipeline(from_addr, module_addr, to_addr, function_name, *args, **kargs):
     transformer = import_function(module_addr, function_name)
-    input = load_gml(from_addr)
+    input = load_graph(from_addr)
+    output = transformer(input, *args, **kargs)
+    save_graph(output, to_addr)
+
+
+def entry_pipeline(from_addr, module_addr, to_addr, function_name):
+    transformer = import_function(module_addr, function_name)
+    input = load_graph(from_addr)
     output = transformer(input)
-    save_gml(output, to_addr)
+    save_graph(output, to_addr)
 
 def main():
     parser = argparse.ArgumentParser(description="Transform a network in GML format using a specified function.")
@@ -17,7 +24,7 @@ def main():
     parser.add_argument("--function", dest="function", required=True, help="Function name of the transformation")
     args = parser.parse_args()
     
-    compute(args.from_addr, args.module_addr, args.to_addr, args.function)
+    pipeline(args.from_addr, args.module_addr, args.to_addr, args.function)
 
 
 

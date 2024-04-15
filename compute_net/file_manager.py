@@ -2,12 +2,14 @@ import importlib.util
 
 import igraph as ig
 
-def load_gml(from_file):
-    loaded_graph = ig.Graph.Load(from_file, format="gml")
+def load_graph(from_file):
+    graph_format = from_file.split(".")[-1]
+    loaded_graph = ig.Graph.Load(from_file, format=graph_format)
     return loaded_graph
 
-def save_gml(graph, to_file):
-    graph.write(to_file, format="gml")
+def save_graph(graph, to_file):
+    graph_format = to_file.split(".")[-1]
+    graph.write(to_file, format=graph_format)
     return 
 
 def import_function(file_path, function_name):
