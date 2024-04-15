@@ -6,7 +6,7 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'compute_net=compute_net.main:entry_pipeline'
+            'compute_net=compute_net.main:main'
         ]
     }
 )
